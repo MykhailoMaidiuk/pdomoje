@@ -7,7 +7,6 @@
 
 **Interakce s dokumentací:**
 - **Formát:** Technická dokumentace, ukázkové kódy, diagramy.
-- **Obsah:** API specifikace, popis standardů (Brick, Haystack, BACnet), příklady modelování dat.
 - **Návod:** Textové tutoriály, příklady implementace, schémata propojení systémů.
 
 ## Výzkumníci a akademici
@@ -16,7 +15,6 @@
 
 **Interakce s dokumentací:**
 - **Formát:** Odkazy na publikace, přehled otevřených datasetů, výzkumné zprávy.
-- **Obsah:** Teoretická analýza standardů a metod, srovnání dostupných technologií.
 - **Návod:** Strukturované studie případů, datové modely, analytické nástroje.
 
 ## Správci budov 
@@ -25,7 +23,6 @@
 
 **Interakce s dokumentací:**
 - **Formát:** Přehledové dokumenty, vizuální dashboardy, doporučení.
-- **Obsah:** Možnosti integrace BEMS, přínosy automatizace, konkrétní scénáře využití.
 - **Návod:** Grafy a schémata, popisy funkcí, seznam doporučených technologií.
 
 ## Firmy, dodavatelé technologií pro BEMS
@@ -34,7 +31,6 @@
 
 **Interakce s dokumentací:**
 - **Formát:** Technické reporty, srovnání platforem, use-case studie.
-- **Obsah:** Přehled běžně používaných protokolů (Brick, Haystack, BACnet), možnosti rozšíření.
 - **Návod:** Infografiky, popisy architektury, návody na implementaci standardů do produktů.
 
 ## IT administrátoři
@@ -43,7 +39,6 @@
 
 **Interakce s dokumentací:**
 - **Formát:** Konfigurační manuály, síťové diagramy, bezpečnostní doporučení.
-- **Obsah:** Požadavky na serverovou infrastrukturu, síťovou komunikaci, bezpečnostní standardy.
 - **Návod:** Příklady konfigurace firewallu, VPN, oprávnění uživatelů.
 
 ## QA inženýři
