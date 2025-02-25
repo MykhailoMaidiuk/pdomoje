@@ -19,7 +19,7 @@
 - **Obsah:** Teoretická analýza standardů a metod, srovnání dostupných technologií.
 - **Návod:** Strukturované studie případů, datové modely, analytické nástroje.
 
-## Správci budov a facility manažeři
+## Správci budov 
 
 **Použití:** Optimalizace provozu budov, správa energií a zařízení.
 
@@ -28,7 +28,7 @@
 - **Obsah:** Možnosti integrace BEMS, přínosy automatizace, konkrétní scénáře využití.
 - **Návod:** Grafy a schémata, popisy funkcí, seznam doporučených technologií.
 
-## Firmy a dodavatelé technologií pro BEMS
+## Firmy, dodavatelé technologií pro BEMS
 
 **Použití:** Hledání vhodných standardů pro integraci do vlastních produktů a služeb.
 
@@ -37,7 +37,7 @@
 - **Obsah:** Přehled běžně používaných protokolů (Brick, Haystack, BACnet), možnosti rozšíření.
 - **Návod:** Infografiky, popisy architektury, návody na implementaci standardů do produktů.
 
-## IT administrátoři a správci sítí
+## IT administrátoři
 
 **Použití:** Konfigurace a správa infrastruktury pro nasazení BEMS.
 
@@ -46,7 +46,7 @@
 - **Obsah:** Požadavky na serverovou infrastrukturu, síťovou komunikaci, bezpečnostní standardy.
 - **Návod:** Příklady konfigurace firewallu, VPN, oprávnění uživatelů.
 
-## Softwaroví testeři a QA inženýři
+## QA inženýři
 
 **Použití:** Testování spolehlivosti a bezpečnosti BEMS systémů.
 
