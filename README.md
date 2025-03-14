@@ -75,4 +75,39 @@ Tato dokumentace je určena pro různé skupiny uživatelů, kteří pracují s 
    - Ukázkové scénáře pro různé budovy
    - Jak implementovat jednoduché řešení
 
+
+
+
 ---
+
+## 📝 Podrobná osnova dokumentace
+
+### 📌 1. Úvod
+- Stručný popis dokumentace a jejího účelu.
+- Cílové skupiny a jejich potřeby.
+
+### 📌 2. Technické požadavky
+- Seznam potřebného softwaru a hardwaru.
+- Přehled technologií používaných v BEMS.
+
+### 📌 3. Práce s dokumentací
+- Jak číst a používat tuto dokumentaci.
+- Struktura a organizace obsahu.
+
+### 📌 4. Návody a implementace
+- Detailní návody pro vývojáře.
+- Praktické ukázky pro správce budov.
+- Možnosti integrace pro firmy a dodavatele.
+
+### 📌 5. Nejčastější problémy a jejich řešení
+- Chyby při instalaci a konfiguraci.
+- Problémy s připojením k databázi.
+- Integrace různých standardů.
+
+### 📌 6. Závěr a další zdroje
+- Doporučené postupy a osvědčené metody.
+- Seznam dalších užitečných zdrojů.
+
+---
+
+
