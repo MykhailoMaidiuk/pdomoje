@@ -1,30 +1,78 @@
+# 📘 Cílové skupiny dokumentace a jejich interakce
 
-# Cílové skupiny dokumentace a jejich interakce
+Tato dokumentace je určena pro různé skupiny uživatelů, kteří pracují s BEMS (Building Energy Management Systems). Obsahuje praktické návody, technické informace a doporučení pro optimální využití.
 
-## Vývojáři a integrátoři BEMS
+---
 
-**Použití:** Implementace, integrace a vývoj systémů BEMS.
+## 👨‍💻 1. Vývojáři a integrátoři BEMS
 
-**Interakce s dokumentací:**
-- **Formát:** Technická dokumentace, ukázkové kódy, diagramy.
-- **Návod:** Textové tutoriály, příklady implementace, schémata propojení systémů.
+**🔹 Použití:** Implementace, integrace a vývoj systémů BEMS.
 
-## Správci budov 
+**📄 Interakce s dokumentací:**
+- **🛠 Formát:** Technická dokumentace, ukázkové kódy, diagramy.
+- **📚 Návod:** Jednoduché tutoriály, základní příklady kódu, schémata zapojení.
 
-**Použití:** Optimalizace provozu budov, správa energií a zařízení.
+### 📌 1.1 Návody pro vývojáře a integrátory
+✅ **Instalace prostředí**
+   - Jak nainstalovat potřebné knihovny a závislosti
+   - Nastavení základního projektu
 
-**Interakce s dokumentací:**
-- **Formát:** Přehledové dokumenty, vizuální dashboardy, doporučení.
-- **Návod:** Grafy a schémata, popisy funkcí, seznam doporučených technologií.
+✅ **Práce s modely a shadery**
+   - Jak načíst a vykreslit model
+   - Jednoduchá úprava shaderů
 
-## Firmy, dodavatelé technologií pro BEMS
+✅ **Připojení databáze**
+   - Jak propojit aplikaci s databází PostgreSQL
+   - Základní dotazy a správa dat
 
-**Použití:** Hledání vhodných standardů pro integraci do vlastních produktů a služeb.
+✅ **Základy BEMS**
+   - Co je BEMS a jak ho propojit s aplikací
+   - Ukázka jednoduché integrace dat
 
-**Interakce s dokumentací:**
-- **Formát:** Technické reporty, srovnání platforem, use-case studie.
-- **Návod:** Infografiky, popisy architektury, návody na implementaci standardů do produktů.
+---
 
+## 🏢 2. Správci budov 
 
+**🔹 Použití:** Optimalizace provozu budov, správa energií a zařízení.
 
+**📄 Interakce s dokumentací:**
+- **📊 Formát:** Přehledové dokumenty, vizuální dashboardy, doporučení.
+- **📚 Návod:** Jednoduché grafy, základní funkce, seznam doporučených technologií.
 
+### 📌 2.1 Návody pro správce budov
+✅ **Zobrazení dat**
+   - Jak zobrazit spotřebu energie v dashboardu
+   - Grafická vizualizace senzorických dat
+
+✅ **Sledování spotřeby**
+   - Jak pochopit reporty o spotřebě
+   - Rady pro snížení nákladů
+
+✅ **Automatizace provozu**
+   - Jak nastavit základní automatizaci
+   - Příklady jednoduchých optimalizací
+
+---
+
+## 🏭 3. Firmy, dodavatelé technologií pro BEMS
+
+**🔹 Použití:** Hledání vhodných standardů pro integraci do vlastních produktů a služeb.
+
+**📄 Interakce s dokumentací:**
+- **📑 Formát:** Technické reporty, srovnání platforem, use-case studie.
+- **📚 Návod:** Přehled standardů, jednoduchá integrace, příklady použití.
+
+### 📌 3.1 Návody pro firmy a dodavatele
+✅ **Základní přehled standardů**
+   - Co je BACnet, Haystack a Brick
+   - Kdy použít jaký standard
+
+✅ **Jednoduchá integrace**
+   - Jak propojit vlastní produkt s BEMS
+   - Příklady základních API volání
+
+✅ **Praktické použití**
+   - Ukázkové scénáře pro různé budovy
+   - Jak implementovat jednoduché řešení
+
+---
