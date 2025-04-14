@@ -72,9 +72,12 @@ docker run -v ./haxall:/app/haxall/dbs -p 8080:8080 --name haxall_run ghcr.io/ha
 **Ověření spuštění:**
 - Po úspěšném spuštění kontejneru sledujte výstup v terminálu pro zprávy o inicializaci
 - Otevřete webový prohlížeč a přejděte na adresu:  
-  [http://localhost:8080](http://localhost:8080)  
-  Měli byste vidět přihlašovací obrazovku nebo dashboard Haxall serveru
+  [http://localhost:8080](http://localhost:8080)
 
+
+  
+  Měli byste vidět přihlašovací obrazovku nebo dashboard Haxall serveru
+![přihlašeni](https://github.com/MykhailoMaidiuk/pdomoje/blob/main/haxall_login.png?raw=true)
 
 ## Případ použití 2 – Integrace dat pomocí Brick a Project Haystack
 <a name="případ-použití-2--integrace-dat-pomocí-brick-a-project-haystack"></a>
