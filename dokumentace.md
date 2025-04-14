@@ -5,16 +5,16 @@
 
 - [Úvod](#úvod)
 - [Cíle dokumentace](#cíle-dokumentace)
-- [Případ použití 1 – Spuštění Haxall serveru pomocí Docker](#případ-použití-1--spuštění-haxall-serveru-pomocí-docker)
+- [Spuštění Haxall serveru pomocí Docker](#případ-použití-1--spuštění-haxall-serveru-pomocí-docker)
   - [3.1 Popis a účel](#31-popis-a-účel)
   - [3.2 Technická architektura a pracovní postup](#32-technická-architektura-a-pracovní-postup)
   - [3.3 Ukázkové kódy](#33-ukázkové-kódy)
   - [3.4 Testování a ověření](#34-testování-a-ověření)
-- [Případ použití 2 – Integrace dat pomocí Brick a Project Haystack](#případ-použití-2--integrace-dat-pomocí-brick-a-project-haystack)
+- [Integrace dat pomocí Brick a Project Haystack](#případ-použití-2--integrace-dat-pomocí-brick-a-project-haystack)
   - [4.1 Popis a účel](#41-popis-a-účel)
   - [4.2 Technická architektura a pracovní postup](#42-technická-architektura-a-pracovní-postup)
   - [4.3 Ukázkové kódy](#43-ukázkové-kódy)
-- [Případ použití 3 – Prediktivní analýza spotřeby energie](#případ-použití-3--prediktivní-analýza-spotřeby-energie)
+- [Prediktivní analýza spotřeby energie](#případ-použití-3--prediktivní-analýza-spotřeby-energie)
   - [5.1 Popis a účel](#51-popis-a-účel)
   - [5.2 Technická architektura a pracovní postup](#52-technická-architektura-a-pracovní-postup)
   - [5.3 Ukázkové kódy](#53-ukázkové-kódy)
@@ -31,7 +31,8 @@ Chytré budovy představují moderní přístup ke správě a optimalizaci provo
 - Ulehčit práci vývojářům a správcům tím, že nabídnou přesné kroky, ukázkové kódy a doporučení pro ověření správného chodu systému.
 - Podpořit integraci dat z různých zdrojů (Brick, Project Haystack) a jejich následné využití pro prediktivní analýzu a optimalizaci provozu budov.
 
-## Případ použití 1 – Spuštění Haxall serveru pomocí Docker
+<br><br><br>
+## 3. Spuštění Haxall serveru pomocí Docker
 <a name="případ-použití-1--spuštění-haxall-serveru-pomocí-docker"></a>
 
 ### 3.1 Popis a účel
@@ -79,13 +80,15 @@ docker run -v ./haxall:/app/haxall/dbs -p 8080:8080 --name haxall_run ghcr.io/ha
   Měli byste vidět přihlašovací obrazovku nebo dashboard Haxall serveru
 ![přihlašeni](https://github.com/MykhailoMaidiuk/pdomoje/blob/main/haxall_login.png?raw=true)
 
-## Případ použití 2 – Integrace dat pomocí Brick a Project Haystack
+
+<br><br><br>
+## 4. Integrace dat pomocí Project Haystack
 <a name="případ-použití-2--integrace-dat-pomocí-brick-a-project-haystack"></a>
 
 ### 4.1 Popis a účel
 <a name="41-popis-a-účel"></a>
 
-Tento případ se zaměřuje na integraci dat z různých senzorů do jednotného datového modelu pomocí otevřených standardů Brick a Project Haystack.  
+Tento případ se zaměřuje na integraci dat z různých senzorů do jednotného datového modelu pomocí otevřených standardů  Project Haystack.  
 Cílem je sjednotit data, zajistit jejich interoperabilitu a sémantické obohacení, čímž se zjednoduší další zpracování a analýza.
 
 ### 4.2 Technická architektura a pracovní postup
@@ -107,7 +110,7 @@ Cílem je sjednotit data, zajistit jejich interoperabilitu a sémantické obohac
 <a name="43-ukázkové-kódy"></a>
 
 **Připojení k Project Haystack API pomocí C#:**
-```bash
+```csharp
 using System;
 using System.Threading.Tasks; 
 using ProjectHaystack.Client;
@@ -126,7 +129,9 @@ public async Task ConnectToHaystackAsync()
         }
 }
 ```
-## Případ použití 3 – Analýza a řízení provozu budovy pomocí Brick Schema (.NET)
+
+<br><br><br>
+## 5. Analýza a řízení provozu budovy pomocí Brick Schema (.NET)
 <a name="případ-použití-3--prediktivní-analýza-spotřeby-energie"></a>
 
 ### 5.1 Popis a účel
@@ -151,7 +156,7 @@ Tím získáme sémanticky bohatý digitální dvojník budovy, který usnadní 
 ### 5.3 Ukázkový kód (.NET – C#)
 <a name="53-ukázkové-kódy"></a>
 
-```bash
+```csharp
 using System;
 using VDS.RDF;
 using VDS.RDF.Query;
