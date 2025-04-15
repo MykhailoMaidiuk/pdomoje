@@ -14,12 +14,10 @@
   - [4.1 Popis a účel](#41-popis-a-účel)
   - [4.2 Technická architektura a pracovní postup](#42-technická-architektura-a-pracovní-postup)
   - [4.3 Ukázkové kódy](#43-ukázkové-kódy)
-- [Prediktivní analýza spotřeby energie](#případ-použití-3--prediktivní-analýza-spotřeby-energie)
+- [Nahrání Brick ontologie na server](#případ-použití-3-nahrání-brick-ontologie-na-server)
   - [5.1 Popis a účel](#51-popis-a-účel)
   - [5.2 Technická architektura a pracovní postup](#52-technická-architektura-a-pracovní-postup)
-  - [5.3 Ukázkové kódy](#53-ukázkové-kódy)
-  - [5.4 Testování a ověření](#54-testování-a-ověření)
-- [Závěr](#závěr)
+  - [5.3 Kroky nahrání Brick ontologie](#53-kroky-nahrání-brick-ontologie)
 
 ## Úvod
 
@@ -131,58 +129,54 @@ public async Task ConnectToHaystackAsync()
 ```
 
 <br><br><br>
-## 5. Analýza a řízení provozu budovy pomocí Brick Schema (.NET)
-<a name="případ-použití-3--prediktivní-analýza-spotřeby-energie"></a>
+## Nahrání Brick ontologie na server
+<a name="případ-použití-3-nahrání-brick-ontologie-na-server"></a>
 
 ### 5.1 Popis a účel
 <a name="51-popis-a-účel"></a>
 
-Cílem tohoto případu je využít otevřený standard Brick Schema k modelování zařízení a prostor v budově.  
-Pomocí .NET aplikace načteme RDF data (Brick model) a provedeme SPARQL dotaz na vyhledání HVAC zařízení.  
-Tím získáme sémanticky bohatý digitální dvojník budovy, který usnadní identifikaci provozních anomálií a optimalizaci řízení.
+Cílem této části je demonstrovat, jak jednoduše nahrát Brick ontologii (schéma) na server pro následnou správu a dotazování.  
+Pro ukázku využíváme Apache Jena Fuseki, což je populární open-source řešení pro správu RDF dat.  
+Brick ontologie může být nahrána buď ve variantě **„Brick+imports.ttl“** (doporučeno), která obsahuje všechny potřebné závislosti, nebo jiné distribuce dle vašich potřeb.
 
 ### 5.2 Technická architektura a pracovní postup
 <a name="52-technická-architektura-a-pracovní-postup"></a>
 
-**Integrace dat:**  
-- Data z různých senzorů a systémů jsou zmapována do Brick modelu a exportována do RDF formátu — např. „brick_model.ttl“.
+**Stažení Brick distribuce:**
 
-**Dotazování:**  
-- Pomocí knihovny dotNetRDF načteme RDF graf a SPARQL dotazem vyhledáme všechna zařízení typu Brick:HVAC.
+- Vyberte odpovídající soubor — např. `Brick+imports.ttl` — z oficiálního [Releases](https://brickschema.org/resources/) Bricku.
 
-**Výstup:**  
-- Výsledky dotazu slouží jako základ pro další analýzu a případnou automatizaci řízení HVAC.
+**Instalace Apache Jena Fuseki:**
 
-### 5.3 Ukázkový kód (.NET – C#)
-<a name="53-ukázkové-kódy"></a>
+- Apache Jena Fuseki lze stáhnout a spustit jako službu či samostatnou aplikaci.
 
-```csharp
-using System;
-using VDS.RDF;
-using VDS.RDF.Query;
-using VDS.RDF.Parsing;
+**Vytvoření datasetu:**
 
-class Program {
-    static void Main() {
-        Graph g = new Graph();
-        FileLoader.Load(g, "brick_model.ttl");
-        g.NamespaceMap.AddNamespace("brick", new Uri("https://brickschema.org/schema/1.1/Brick#"));
-        string query = @"PREFIX brick: <https://brickschema.org/schema/1.1/Brick#>
-                         SELECT ?device WHERE { ?device a brick:HVAC . }";
-        SparqlResultSet results = (SparqlResultSet)g.ExecuteQuery(query);
-        foreach (var r in results) Console.WriteLine(r["device"]);
-    }
-}
-```
+- Na adrese [http://localhost:3030](http://localhost:3030) otevřete Fuseki UI a založte nový dataset.
 
-### 5.4 Testování a ověření
-<a name="54-testování-a-ověření"></a>
+**Nahrání souboru:**
 
-**Validace RDF modelu:**  
-- Ověřte, že soubor „brick_model.ttl“ obsahuje správně definované entity pomocí RDF editoru — např. Protégé.
+- Vyberte dataset, klikněte na „add data“ a nahrajte soubor s Brick ontologií.
 
-**Ověření dotazu:**  
-- Spusťte aplikaci a zkontrolujte výpis HVAC zařízení v konzoli.
+### 5.3 Kroky nahrání Brick ontologie
+<a name="53-kroky-nahrání-brick-ontologie"></a>
 
-**Další integrace:**  
-- Výsledky lze dále zpracovávat a propojovat s automatizačními logikami pro optimalizaci provozu budovy.
+**1. Manage datasets**  
+V seznamu datasetů klikněte na dataset, kam chcete nahrát Brick ontologii (např. `/brickdb`).
+
+**2. Add data**  
+V horním menu datasetu zvolte **add data**.
+![add data](https://github.com/MykhailoMaidiuk/pdomoje/blob/main/brick1.png?raw=true)
+
+**3. Select files**  
+Klikněte na **select files** a zvolte soubor, např. `Brick+imports.ttl`.
+![select files](https://github.com/MykhailoMaidiuk/pdomoje/blob/main/brick2.png?raw=true)
+
+**4. Upload all**  
+Potvrďte nahrání kliknutím na **upload all**. Fuseki načte RDF data a zobrazí počet načtených triple.
+
+**5. Ověření importu**  
+Po úspěšném nahrání se zobrazí status (např. `Triples uploaded: 54601`).  
+Tlačítkem **query** můžete otevřít SPARQL rozhraní a dotazovat se na data z Brick ontologie.
+![upload all](https://github.com/MykhailoMaidiuk/pdomoje/blob/main/brick3.png?raw=true)
+
