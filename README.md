@@ -1,8 +1,11 @@
 # 📘 Cílové skupiny dokumentace a jejich interakce
 
 Tato dokumentace je určena pro různé skupiny uživatelů, kteří pracují s BEMS (Building Energy Management Systems). Obsahuje praktické návody, technické informace a doporučení pro optimální využití.
+# Dokumentace projektu
 
----
+Veškerá technická dokumentace je nyní v souboru [Dokumentace.md](./Dokumentace.md).
+
+
 
 ## 👨‍💻 1. Vývojáři a integrátoři BEMS
 
