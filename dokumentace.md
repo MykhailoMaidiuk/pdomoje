@@ -21,13 +21,15 @@
 
 ## Úvod
 
-Chytré budovy představují moderní přístup ke správě a optimalizaci provozu, kdy jsou data ze senzorů a IoT zařízení využívána pro zvýšení energetické účinnosti, komfortu a bezpečnosti. Tato dokumentace popisuje implementaci datových modelů a nástrojů v rámci BEMS (Building Energy Management Systems) a je zaměřena na tři konkrétní případy použití. První případ obsahuje podrobný návod, jak spustit Haxall server pomocí Dockeru – kritickou základnu pro následnou integraci dat a další analýzy.
+Chytré budovy představují moderní přístup ke správě a optimalizaci provozu, kdy jsou data ze senzorů a IoT zařízení využívána pro zvýšení energetické účinnosti, komfortu a bezpečnosti. Tato dokumentace popisuje implementaci datových modelů a nástrojů v rámci BEMS (Building Energy Management Systems) a je zaměřena na tři konkrétní případy použití. 
 
 ## Cíle dokumentace
 
-- Poskytnout kompletní průvodce instalací a nastavením Haxall serveru pro správu dat chytrých budov.
-- Ulehčit práci vývojářům a správcům tím, že nabídnou přesné kroky, ukázkové kódy a doporučení pro ověření správného chodu systému.
-- Podpořit integraci dat z různých zdrojů (Brick, Project Haystack) a jejich následné využití pro prediktivní analýzu a optimalizaci provozu budov.
+Cílem této dokumentace je poskytnout praktický průvodce nasazením a využitím klíčových nástrojů pro správu dat chytrých budov (BEMS). Popisuje tři hlavní scénáře:
+
+- Spuštění Haxall serveru pomocí Dockeru – rychlé a stabilní nasazení Project Haystack backendu pro ukládání a správu senzorových dat.
+- Integrace dat pomocí Project Haystack – sjednocení heterogenních datových zdrojů do standardizovaného modelu s využitím .NET klienta pro snadné dotazování a analýzu.
+- Nahrání Brick ontologie na RDF server – import kompletního Brick schématu (např. „Brick+imports.ttl“) do Apache Jena Fuseki pro SPARQL dotazování a sémantické ověřování modelů.
 
 <br><br><br>
 ## 3. Spuštění Haxall serveru pomocí Docker
@@ -86,23 +88,35 @@ docker run -v ./haxall:/app/haxall/dbs -p 8080:8080 --name haxall_run ghcr.io/ha
 ### 4.1 Popis a účel
 <a name="41-popis-a-účel"></a>
 
-Tento případ se zaměřuje na integraci dat z různých senzorů do jednotného datového modelu pomocí otevřených standardů  Project Haystack.  
-Cílem je sjednotit data, zajistit jejich interoperabilitu a sémantické obohacení, čímž se zjednoduší další zpracování a analýza.
+Tato část dokumentace popisuje, jak v .NET aplikaci navázat spojení s Haxall serverem (Project Haystack API).
+Cílem je ukázat, jak bezpečně autentizovat klienta, otevřít spojení a ověřit přístup k datům prostřednictvím jednoduchého API volání.
 
 ### 4.2 Technická architektura a pracovní postup
 <a name="42-technická-architektura-a-pracovní-postup"></a>
 
-**Nasazení Haxall serveru:**
+**Předpoklady**
 
-- Využijte dříve spuštěnou instanci Haxall jako backend pro integraci dat.
+- Běží lokální nebo vzdálený Haxall server (např. na [http://localhost:8080/api/](http://localhost:8080/api/)).
+- .NET 6+ projekt, do kterého lze přidat NuGet balíček.
 
-**Integrace v .NET aplikaci:**
+**Instalace klienta**
 
-- Instalace NuGet balíčku ProjectHaystack.Client a vytvoření klienta pro připojení k API Haxall pomocí Basic Authentication.
+```bash
+dotnet add package ProjectHaystack.Client
+```
 
-**Dotazování:**
+**Konfigurace autentizace**
 
-- Provádění testovacích dotazů nad importovanými daty — např. identifikátory zařízení, propojení objektů — pro ověření správnosti integrace.
+- Použijte **SCRAM** nebo **Basic** autentizaci podle nastavení serveru.
+
+**Otevření spojení**
+
+- Vytvořte instanci `HaystackClient`, předáte autentizátor a základní URI API.
+
+**Ověření připojení**
+
+- Po úspěšném `OpenAsync()` můžete volat další operace, jako jsou dotazy nebo importy.
+
 
 ### 4.3 Ukázkové kódy
 <a name="43-ukázkové-kódy"></a>
@@ -110,21 +124,28 @@ Cílem je sjednotit data, zajistit jejich interoperabilitu a sémantické obohac
 **Připojení k Project Haystack API pomocí C#:**
 ```csharp
 using System;
-using System.Threading.Tasks; 
+using System.Threading.Tasks;
 using ProjectHaystack.Client;
 
-public class HaystackIntegration  
-{  
-public async Task ConnectToHaystackAsync()  
-        {
-            var user = "someuser";
-            var pass = "somepassword";
-            var uri = new Uri("https://someserver/api/");
-            var auth = new ScramAuthenticator(user, pass);
-            auth.AddLegacySpaceToProof = true;
-            var client = new HaystackClient(auth, uri);
-            await client.OpenAsync();
-        }
+public class HaystackConnector
+{
+    public async Task ConnectAsync()
+    {
+        // 1) Set up credentials
+        var user = "someuser";
+        var pass = "somepassword";
+        var uri  = new Uri("https://someserver/api/");
+        
+        // 2) Create authenticator
+        var auth = new ScramAuthenticator(user, pass) { AddLegacySpaceToProof = true };
+        
+        // 3) Initialize Haystack client
+        var client = new HaystackClient(auth, uri);
+        
+        // 4) Open connection to the API
+        await client.OpenAsync();
+        Console.WriteLine("Successfully connected to the Project Haystack API.");
+    }
 }
 ```
 
