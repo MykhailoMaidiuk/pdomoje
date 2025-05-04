@@ -10,7 +10,7 @@
   - [3.2 Technická architektura a pracovní postup](#32-technická-architektura-a-pracovní-postup)
   - [3.3 Ukázkové kódy](#33-ukázkové-kódy)
   - [3.4 Testování a ověření](#34-testování-a-ověření)
-- [Integrace dat pomocí Brick a Project Haystack](#případ-použití-2--integrace-dat-pomocí-brick-a-project-haystack)
+- [Připojení .NET klienta k API](#případ-použití-2--integrace-dat-pomocí-brick-a-project-haystack)
   - [4.1 Popis a účel](#41-popis-a-účel)
   - [4.2 Technická architektura a pracovní postup](#42-technická-architektura-a-pracovní-postup)
   - [4.3 Ukázkové kódy](#43-ukázkové-kódy)
@@ -82,7 +82,7 @@ docker run -v ./haxall:/app/haxall/dbs -p 8080:8080 --name haxall_run ghcr.io/ha
 
 
 <br><br><br>
-## 4. Integrace dat pomocí Project Haystack
+## 4. Připojení .NET klienta k API
 <a name="případ-použití-2--integrace-dat-pomocí-brick-a-project-haystack"></a>
 
 ### 4.1 Popis a účel
@@ -107,7 +107,7 @@ dotnet add package ProjectHaystack.Client
 
 **Konfigurace autentizace**
 
-- Použijte **SCRAM** nebo **Basic** autentizaci podle nastavení serveru.
+- Použijte **SCRAM** autentizaci podle nastavení serveru.
 
 **Otevření spojení**
 
