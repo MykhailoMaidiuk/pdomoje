@@ -6,110 +6,51 @@ Tato dokumentace je určena pro různé skupiny uživatelů, kteří pracují s 
 Veškerá technická dokumentace je nyní v souboru [Dokumentace.md](./Dokumentace.md).
 
 
+# 👨‍💻 1. Vývojáři a integrátoři BEMS
 
-## 👨‍💻 1. Vývojáři a integrátoři BEMS
+🔹 **Použití:** Nasazení a propojení backendů (Haxall), vývoj .NET klientů pro Project Haystack, správa dat.
 
-**🔹 Použití:** Implementace, integrace a vývoj systémů BEMS.
+📄 **Interakce s dokumentací:**
 
-**📄 Interakce s dokumentací:**
-- **🛠 Formát:** Technická dokumentace, ukázkové kódy, diagramy.
-- **📚 Návod:** Jednoduché tutoriály, základní příklady kódu, schémata zapojení.
+🛠 **Formát:** Technické návody, ukázkové C# kódy, Docker příkazy.
 
-### 📌 1.1 Návody pro vývojáře a integrátory
-✅ **Instalace prostředí**
-   - Jak nainstalovat potřebné knihovny a závislosti
-   - Nastavení základního projektu
+📚 **Návod:**
 
-✅ **Práce s modely a shadery**
-   - Jak načíst a vykreslit model
-   - Jednoduchá úprava shaderů
-
-✅ **Připojení databáze**
-   - Jak propojit aplikaci s databází PostgreSQL
-   - Základní dotazy a správa dat
-
-✅ **Základy BEMS**
-   - Co je BEMS a jak ho propojit s aplikací
-   - Ukázka jednoduché integrace dat
+- **Spuštění Haxall** – krok‑za‑krokem Docker příkaz pro lokální server Haystack.
+- **Project Haystack API (.NET)** – jak se připojit z C# aplikace ke Haxall serveru.
+- **SPARQL dotazy** – příklady pro testování a automatizaci.
 
 ---
 
-## 🏢 2. Správci budov 
+# 🏢 2. Správci budov
 
-**🔹 Použití:** Optimalizace provozu budov, správa energií a zařízení.
+🔹 **Použití:** Vizualizace dat, kontrola provozu a jednoduše nasaditelné řešení bez vývoje.
 
-**📄 Interakce s dokumentací:**
-- **📊 Formát:** Přehledové dokumenty, vizuální dashboardy, doporučení.
-- **📚 Návod:** Jednoduché grafy, základní funkce, seznam doporučených technologií.
+📄 **Interakce s dokumentací:**
 
-### 📌 2.1 Návody pro správce budov
-✅ **Zobrazení dat**
-   - Jak zobrazit spotřebu energie v dashboardu
-   - Grafická vizualizace senzorických dat
+📊 **Formát:** Přehledové kroky, screenshoty Fuseki UI, ukázky SPARQL dotazů.
 
-✅ **Sledování spotřeby**
-   - Jak pochopit reporty o spotřebě
-   - Rady pro snížení nákladů
+📚 **Návod:**
 
-✅ **Automatizace provozu**
-   - Jak nastavit základní automatizaci
-   - Příklady jednoduchých optimalizací
+- **Nahrání Brick ontologie** – jak uploadovat `Brick+imports.ttl` do Apache Jena Fuseki.
+- **Ověření importu** – kontrola počtu triple, základní SPARQL dotaz pro ověření tříd.
+- **Interaktivní dotazování** – jednoduché příklady, jak získat přehled o entitách.
 
 ---
 
-## 🏭 3. Firmy, dodavatelé technologií pro BEMS
+# 🏭 3. Firmy a dodavatelé technologií pro BEMS
 
-**🔹 Použití:** Hledání vhodných standardů pro integraci do vlastních produktů a služeb.
+🔹 **Použití:** Výběr a implementace vhodných standardů (Haystack, Brick), integrace do vlastních produktů.
 
-**📄 Interakce s dokumentací:**
-- **📑 Formát:** Technické reporty, srovnání platforem, use-case studie.
-- **📚 Návod:** Přehled standardů, jednoduchá integrace, příklady použití.
+📄 **Interakce s dokumentací:**
 
-### 📌 3.1 Návody pro firmy a dodavatele
-✅ **Základní přehled standardů**
-   - Co je BACnet, Haystack a Brick
-   - Kdy použít jaký standard
+📑 **Formát:** Srovnání přístupů, doporučené distribuce ontologií, use‑case studie.
 
-✅ **Jednoduchá integrace**
-   - Jak propojit vlastní produkt s BEMS
-   - Příklady základních API volání
+📚 **Návod:**
 
-✅ **Praktické použití**
-   - Ukázkové scénáře pro různé budovy
-   - Jak implementovat jednoduché řešení
-
-
-
-
----
-
-## 📝 Podrobná osnova dokumentace
-
-### 📌 1. Úvod
-- Stručný popis dokumentace a jejího účelu.
-- Cílové skupiny a jejich potřeby.
-
-### 📌 2. Technické požadavky
-- Seznam potřebného softwaru a hardwaru.
-- Přehled technologií používaných v BEMS.
-
-### 📌 3. Práce s dokumentací
-- Jak číst a používat tuto dokumentaci.
-- Struktura a organizace obsahu.
-
-### 📌 4. Návody a implementace
-- Detailní návody pro vývojáře.
-- Praktické ukázky pro správce budov.
-- Možnosti integrace pro firmy a dodavatele.
-
-### 📌 5. Nejčastější problémy a jejich řešení
-- Chyby při instalaci a konfiguraci.
-- Problémy s připojením k databázi.
-- Integrace různých standardů.
-
-### 📌 6. Závěr a další zdroje
-- Doporučené postupy a osvědčené metody.
-- Seznam dalších užitečných zdrojů.
+- **Volba distribuce Brick** – rozdíly mezi `Brick+imports.ttl`, `Brick.ttl`, `Brick-only.ttl`.
+- **Enterprise nasazení Fuseki** – doporučené konfigurace pro produkci.
+- **Standardizované API volání** – jak integrovat Project Haystack klienta do vlastních řešení.
 
 ---
 
