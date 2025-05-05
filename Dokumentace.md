@@ -92,6 +92,7 @@ docker logs -f haxall_run
   
   Měli byste vidět přihlašovací obrazovku nebo dashboard Haxall serveru
 ![přihlašeni](https://github.com/MykhailoMaidiuk/pdomoje/blob/main/haxall_login.png?raw=true)
+[🔙 Zpět na obsah](#obsah)
 
 
 <br><br><br>
@@ -180,6 +181,7 @@ public class HaystackConnector
     }
 }
 ```
+[🔙 Zpět na obsah](#obsah)
 
 <br><br><br>
 ## 5. Nahrání Brick ontologie na server
@@ -232,4 +234,5 @@ Potvrďte nahrání kliknutím na **upload all**. Fuseki načte RDF data a zobra
 Po úspěšném nahrání se zobrazí status (např. `Triples uploaded: 54601`).  
 Tlačítkem **query** můžete otevřít SPARQL rozhraní a dotazovat se na data z Brick ontologie.
 ![upload all](https://github.com/MykhailoMaidiuk/pdomoje/blob/main/brick3.png?raw=true)
+[🔙 Zpět na obsah](#obsah)
 
