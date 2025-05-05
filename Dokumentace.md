@@ -27,7 +27,7 @@ Chytré budovy představují moderní přístup ke správě a optimalizaci provo
 Cílem této dokumentace je poskytnout praktický průvodce nasazením a využitím klíčových nástrojů pro správu dat chytrých budov (BEMS). Popisuje tři hlavní scénáře:
 
 - Spuštění Haxall serveru pomocí Dockeru – rychlé a stabilní nasazení Project Haystack backendu pro ukládání a správu senzorových dat.
-- Integrace dat pomocí Project Haystack – sjednocení heterogenních datových zdrojů do standardizovaného modelu s využitím .NET klienta pro snadné dotazování a analýzu.
+- Připojení .NET klienta k API – sjednocení heterogenních datových zdrojů do standardizovaného modelu s využitím .NET klienta pro snadné dotazování a analýzu.
 - Nahrání Brick ontologie na RDF server – import kompletního Brick schématu (např. „Brick+imports.ttl“) do Apache Jena Fuseki pro SPARQL dotazování a sémantické ověřování modelů.
 
 <br><br><br>
