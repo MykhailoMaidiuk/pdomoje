@@ -203,7 +203,9 @@ Brick ontologie může být nahrána buď ve variantě **„Brick+imports.ttl“
 
 **Instalace Apache Jena Fuseki:**
 
-- Apache Jena Fuseki lze stáhnout a spustit jako službu či samostatnou aplikaci.
+- Fuseki můžete spustit jako službu či samostatnou aplikaci.
+
+- Pro rychlé nasazení pomocí Dockeru klikněte [zde](https://jena.apache.org/documentation/fuseki2/fuseki-docker.html) a postupujte podle oficiálního návodu.
 
 **Vytvoření datasetu:**
 
