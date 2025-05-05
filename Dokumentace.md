@@ -8,8 +8,7 @@
 - [Spuštění Haxall serveru pomocí Docker](#případ-použití-1--spuštění-haxall-serveru-pomocí-docker)
   - [3.1 Popis a účel](#31-popis-a-účel)
   - [3.2 Technická architektura a pracovní postup](#32-technická-architektura-a-pracovní-postup)
-  - [3.3 Ukázkové kódy](#33-ukázkové-kódy)
-  - [3.4 Testování a ověření](#34-testování-a-ověření)
+  - [3.3 Testování a ověření](#34-testování-a-ověření)
 - [Připojení .NET klienta k API](#případ-použití-2--integrace-dat-pomocí-brick-a-project-haystack)
   - [4.1 Popis a účel](#41-popis-a-účel)
   - [4.2 Technická architektura a pracovní postup](#42-technická-architektura-a-pracovní-postup)
@@ -50,29 +49,44 @@ Díky nasazení pomocí Dockeru je zajištěna jednoduchá instalace, správa pr
 - Oprávnění pro práci s Docker kontejnery a lokálními složkami
 - Internetové připojení k stažení Docker obrazu z GitHub Container Registry
 
+**Přístup k rozhraní:**
+- Příkazy spusťte v libovolném shellu: Bash (Linux/macOS), PowerShell nebo CMD (Windows), případně přes integrovanou konzoli v IDE (Visual Studio, Rider, VS Code).
+- Můžete použít Docker CLI, Docker Desktop GUI nebo Docker Compose s vlastním docker-compose.yml.
+
 **Persistentní úložiště:**
 - Vytvoření lokální složky (např. `haxall`), která bude připojena do Docker kontejneru pro uchování databázových dat
-
-**Spuštění kontejneru:**
-- Docker kontejner se spouští s odpovídající konfigurací portů a volume, což umožňuje přístup k webovému rozhraní Haxall serveru na adrese [http://localhost:8080](http://localhost:8080)
-
-### 3.3 Ukázkové kódy
-<a name="33-ukázkové-kódy"></a>
-
-1. Vytvoření lokální složky:
 ```bash
 mkdir haxall
 ```
-2. Spuštění Docker kontejneru:
+
+**Spuštění kontejneru:**
+- Docker kontejner se spouští s odpovídající konfigurací portů a volume, což umožňuje přístup k webovému rozhraní Haxall serveru na adrese [http://localhost:8080](http://localhost:8080)
 ```bash
 docker run -v ./haxall:/app/haxall/dbs -p 8080:8080 --name haxall_run ghcr.io/haxall/haxall
 ```
-### 3.4 Testování a ověření
+
+
+**➡️ Po úspěšném spuštění kontejneru sledujte výstup v terminálu pro zprávy o inicializaci**
+
+
+### 3.3 Testování a ověření
 <a name="34-testování-a-ověření"></a>
 
 **Ověření spuštění:**
-- Po úspěšném spuštění kontejneru sledujte výstup v terminálu pro zprávy o inicializaci
-- Otevřete webový prohlížeč a přejděte na adresu:  
+**Zkontrolujte běžící kontejner:**
+```bash
+docker ps
+```
+
+– ověřte, že `haxall_run` je spuštěný.
+
+**Sledujte logy v reálném čase:**
+
+```bash
+docker logs -f haxall_run
+```
+
+**Otevřete webový prohlížeč a přejděte na adresu:**
   [http://localhost:8080](http://localhost:8080)
 
 
@@ -88,40 +102,59 @@ docker run -v ./haxall:/app/haxall/dbs -p 8080:8080 --name haxall_run ghcr.io/ha
 ### 4.1 Popis a účel
 <a name="41-popis-a-účel"></a>
 
-Tato část dokumentace popisuje, jak v .NET aplikaci navázat spojení s Haxall serverem (Project Haystack API).
-Cílem je ukázat, jak bezpečně autentizovat klienta, otevřít spojení a ověřit přístup k datům prostřednictvím jednoduchého API volání.
+`.NET Haystack` klientská knihovna zjednodušuje komunikaci s libovolným serverem kompatibilním s Project Haystack.  
+Balíček `ProjectHaystack.Client` (NuGet) nabízí:
+
+- **Autentizaci**  
+  Oficiálně podporuje [SCRAM](https://project-haystack.org/doc/Auth#scram), neoficiálně i Basic aj., vše přes handshake, aby server sdělil, které metody podporuje.
+
+- **Konverzi**  
+  Automatický mapping mezi HZinc textem a C# modely pomocí tříd `HZincReader` / `HZincWriter`.
+
+Knihovna poskytuje jednotné rozhraní `HaystackClient`, které v pozadí využívá `HttpClient` a `IAuthenticator`.
 
 ### 4.2 Technická architektura a pracovní postup
 <a name="42-technická-architektura-a-pracovní-postup"></a>
 
-**Předpoklady**
-
-- Běží lokální nebo vzdálený Haxall server (např. na [http://localhost:8080/api/](http://localhost:8080/api/)).
-- .NET 6+ projekt, do kterého lze přidat NuGet balíček.
-
-**Instalace klienta**
+**Instalace NuGet balíčku:**
 
 ```bash
 dotnet add package ProjectHaystack.Client
 ```
 
-**Konfigurace autentizace**
+**Výběr autentizátoru:**
 
-- Použijte **SCRAM** autentizaci podle nastavení serveru.
+- `AutodetectAuthenticator` – detekuje SCRAM, Basic apod.
+- `ScramAuthenticator` – doporučeno, nejméně režie
+- `BasicAuthenticator` / `NonHaystackBasicAuthenticator`
+
+**Inicializace klienta**
+
+*Standardní konstruktor:*
+
+```csharp
+var auth   = new ScramAuthenticator(user, pass);
+var client = new HaystackClient(auth, new Uri("http://localhost:8080/api/"));
+```
+
+*S vlastním `HttpClient`:*
+
+```csharp
+var handler    = new HttpClientHandler { UseCookies = true };
+var httpClient = new HttpClient(handler);
+var client     = new HaystackClient(httpClient, auth, uri);
+```
 
 **Otevření spojení**
 
-- Vytvořte instanci `HaystackClient`, předáte autentizátor a základní URI API.
-
-**Ověření připojení**
-
-- Po úspěšném `OpenAsync()` můžete volat další operace, jako jsou dotazy nebo importy.
-
+```csharp
+await client.OpenAsync();
+```
 
 ### 4.3 Ukázkové kódy
 <a name="43-ukázkové-kódy"></a>
 
-**Připojení k Project Haystack API pomocí C#:**
+**Připojení a základní volání pomocí C#:**
 ```csharp
 using System;
 using System.Threading.Tasks;
@@ -131,26 +164,26 @@ public class HaystackConnector
 {
     public async Task ConnectAsync()
     {
-        // 1) Set up credentials
+        // 1) Nastavení přihlašovacích údajů
         var user = "someuser";
         var pass = "somepassword";
         var uri  = new Uri("https://someserver/api/");
         
-        // 2) Create authenticator
+        // 2) Vytvoření SCRAM autentizátoru
         var auth = new ScramAuthenticator(user, pass) { AddLegacySpaceToProof = true };
         
-        // 3) Initialize Haystack client
+        // 3) Inicializace klienta Haystack
         var client = new HaystackClient(auth, uri);
         
-        // 4) Open connection to the API
+        // 4) Otevření spojení k API
         await client.OpenAsync();
-        Console.WriteLine("Successfully connected to the Project Haystack API.");
+        Console.WriteLine("Connected to Project Haystack API.");
     }
 }
 ```
 
 <br><br><br>
-## Nahrání Brick ontologie na server
+## 5. Nahrání Brick ontologie na server
 <a name="případ-použití-3-nahrání-brick-ontologie-na-server"></a>
 
 ### 5.1 Popis a účel
