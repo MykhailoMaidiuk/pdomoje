@@ -72,7 +72,6 @@ docker run -v ./haxall:/app/haxall/dbs -p 8080:8080 --name haxall_run ghcr.io/ha
 ### 3.3 Testování a ověření
 <a name="34-testování-a-ověření"></a>
 
-**Ověření spuštění:**
 **Zkontrolujte běžící kontejner:**
 ```bash
 docker ps
